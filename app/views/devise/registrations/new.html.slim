@@ -1,0 +1,41 @@
+.auth-container
+  .auth-card
+    .card-body
+      .text-center.mb-4
+        h2.h3.font-bold = I18n.t('devise.registrations.new.title')
+        p.text-muted = I18n.t('devise.registrations.new.subtitle')
+
+      = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'auth-form' }) do |f|
+        = render "devise/shared/error_messages", resource: resource
+
+        .form-group
+          = f.label :name, I18n.t('devise.registrations.new.name'), class: 'form-label required'
+          = f.text_field :name, autofocus: true, autocomplete: "name", placeholder: I18n.t('devise.registrations.new.name'), class: 'form-control'
+
+        .form-group
+          = f.label :email, I18n.t('devise.registrations.new.email'), class: 'form-label required'
+          = f.email_field :email, autocomplete: "email", placeholder: "your@email.com", class: 'form-control'
+
+        .form-group
+          = f.label :password, I18n.t('devise.registrations.new.password'), class: 'form-label required'
+          - if @minimum_password_length
+            span.text-muted.text-sm = I18n.t('devise.registrations.new.password_minimum', count: @minimum_password_length)
+          = f.password_field :password, autocomplete: "new-password", placeholder: "••••••••", class: 'form-control'
+
+        .form-group
+          = f.label :password_confirmation, I18n.t('devise.registrations.new.password_confirmation'), class: 'form-label required'
+          = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "••••••••", class: 'form-control'
+
+        .form-group
+          .form-check.company-toggle
+            = check_box_tag 'register_company', '1', false, class: 'form-check-input', id: 'register_company'
+            label.form-check-label for="register_company"
+              strong = I18n.t('devise.registrations.new.register_company')
+              span.text-muted.d-block.mt-1 = I18n.t('devise.registrations.new.register_company_description')
+
+        .form-group
+          = f.submit I18n.t('devise.registrations.new.submit'), class: 'btn-secondary btn-block btn-lg'
+
+      .text-center.mt-4
+        = render "devise/shared/links"
+

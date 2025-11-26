@@ -1,0 +1,162 @@
+en:
+  hello: "Hello world"
+  site_name: "Sport"
+  
+  # Roles
+  roles:
+    admin: "Admin"
+    customer: "Customer"
+    owner: "Owner"
+    employee: "Employee"
+    manager: "Manager"
+  
+  # Devise - Authentication
+  devise:
+    sessions:
+      new:
+        title: "Sign In"
+        subtitle: "Welcome back!"
+        email: "Email"
+        password: "Password"
+        remember_me: "Remember me"
+        submit: "Sign In"
+    registrations:
+      new:
+        title: "Sign Up"
+        subtitle: "Create your account"
+        register_company: "Register Company"
+        register_company_description: "I want to rent out objects, not search for them"
+        name: "Name"
+        email: "Email"
+        password: "Password"
+        password_confirmation: "Confirm Password"
+        role: "Role"
+        submit: "Sign Up"
+        password_minimum: " (minimum %{count} characters)"
+      edit:
+        title: "Edit Profile"
+        subtitle: "Update your account information"
+        email: "Email"
+        new_password: "New Password"
+        new_password_hint: " (leave blank if you don't want to change it)"
+        password_confirmation: "Confirm New Password"
+        current_password: "Current Password"
+        current_password_hint: " (needed to confirm your changes)"
+        submit: "Update"
+        cancel_account: "Cancel my account"
+        cancel_account_description: "Unhappy? You can delete your account."
+        cancel_account_confirm: "Are you sure? This action cannot be undone!"
+        waiting_confirmation: "Currently waiting confirmation for: %{email}"
+        password_minimum: "%{count} characters minimum"
+    passwords:
+      new:
+        title: "Forgot your password?"
+        email: "Email"
+        submit: "Send me reset password instructions"
+      edit:
+        title: "Change your password"
+        new_password: "New password"
+        password_confirmation: "Confirm new password"
+        submit: "Change my password"
+        password_minimum: "%{count} characters minimum"
+    confirmations:
+      new:
+        title: "Resend confirmation instructions"
+        email: "Email"
+        submit: "Resend confirmation instructions"
+    unlocks:
+      new:
+        title: "Resend unlock instructions"
+        email: "Email"
+        submit: "Resend unlock instructions"
+    mailer:
+      confirmation_instructions:
+        welcome: "Welcome %{email}!"
+        message: "You can confirm your account email through the link below:"
+        link: "Confirm my account"
+      email_changed:
+        hello: "Hello %{email}!"
+        being_changed: "We're contacting you to notify you that your email is being changed to %{email}."
+        changed: "We're contacting you to notify you that your email has been changed to %{email}."
+      password_change:
+        hello: "Hello %{email}!"
+        message: "We're contacting you to notify you that your password has been changed."
+      reset_password_instructions:
+        hello: "Hello %{email}!"
+        message: "Someone has requested a link to change your password. You can do this through the link below."
+        link: "Change my password"
+        ignore: "If you didn't request this, please ignore this email."
+        note: "Your password won't change until you access the link above and create a new one."
+      unlock_instructions:
+        hello: "Hello %{email}!"
+        message: "Your account has been locked due to an excessive number of unsuccessful sign in attempts."
+        link_message: "Click the link below to unlock your account:"
+        link: "Unlock my account"
+    shared:
+      links:
+        already_have_account: "Already have an account?"
+        sign_in: "Sign In"
+        no_account: "Don't have an account?"
+        sign_up: "Sign Up"
+        forgot_password: "Forgot your password?"
+        no_confirmation: "Didn't receive confirmation instructions?"
+        no_unlock: "Didn't receive unlock instructions?"
+        sign_in_with: "Sign in with %{provider}"
+  
+  # CRM
+  crm:
+    dashboard: "Dashboard"
+    listings: "Listings"
+    settings: "Settings"
+    navbar:
+      dashboard: "Dashboard"
+      listings: "Listings"
+      settings: "Settings"
+    dashboard:
+      title: "Dashboard"
+      share: "Share"
+      export: "Export"
+      listings:
+        title: "Listings"
+        header: "Listings"
+        active: "%{count} Active"
+        description: "You have %{count} active listings visible to customers."
+      bookings:
+        title: "Bookings"
+        header: "Bookings"
+        new: "%{count} New"
+        description: "You have %{count} new bookings to review."
+      revenue:
+        title: "Revenue"
+        header: "Revenue"
+        amount: "$%{amount}"
+        description: "Revenue generated this month."
+  
+  # Screener
+  screener:
+    home: "Home"
+    search: "Search"
+    navbar:
+      home: "Home"
+      search: "Search"
+      company: "Company"
+      bookings: "My Bookings"
+      profile: "Profile"
+      settings: "Settings"
+      theme: "Theme"
+      sign_out: "Sign Out"
+      sign_in: "Sign In"
+      sign_up: "Sign Up"
+    home:
+      hero:
+        title: "Find Your Sport"
+        subtitle: "Search for the best sports facilities and equipment rentals near you."
+        button: "Start Searching"
+      athletes:
+        title: "For Athletes"
+        description: "Find courts, fields, and gyms available for booking instantly."
+        button: "Browse Facilities"
+      teams:
+        title: "For Teams"
+        description: "Organize your team events and tournaments with ease."
+        button: "Team Services"

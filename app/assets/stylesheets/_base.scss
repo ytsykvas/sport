@@ -1,0 +1,70 @@
+@use 'variables' as *;
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+blockquote,
+dl,
+dd {
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    line-height: $line-height-normal;
+    text-rendering: optimizeSpeed;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--bg-primary) !important;
+    color: var(--text-primary) !important;
+}
+
+img,
+picture {
+    max-width: 100%;
+    display: block;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+:focus-visible {
+    outline: 2px solid var(--primary-base);
+    outline-offset: 2px;
+}
+
+::selection {
+    background-color: rgba(37, 99, 235, 0.2); 
+    color: inherit;
+
+    [data-theme="dark"] & {
+        background-color: rgba(96, 165, 250, 0.3);
+    }
+}

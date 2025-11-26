@@ -1,0 +1,19 @@
+.auth-container
+  .auth-card
+    .card-body
+      .text-center.mb-4
+        h2.h3.font-bold = I18n.t('devise.passwords.new.title')
+
+      = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: 'auth-form' }) do |f|
+        = render "devise/shared/error_messages", resource: resource
+
+        .form-group
+          = f.label :email, I18n.t('devise.passwords.new.email'), class: 'form-label required'
+          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "your@email.com", class: 'form-control'
+
+        .form-group
+          = f.submit I18n.t('devise.passwords.new.submit'), class: 'btn-primary btn-block btn-lg'
+
+      .text-center.mt-4
+        = render "devise/shared/links"
+

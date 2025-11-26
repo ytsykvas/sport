@@ -1,0 +1,506 @@
+@use 'variables' as *;
+
+.navbar {
+  background-color: var(--navbar-bg);
+  border-bottom: 1px solid var(--navbar-border);
+  transition: background-color $transition-base, border-color $transition-base;
+}
+
+.navbar-brand {
+  font-weight: $font-weight-bold;
+  color: var(--text-primary) !important;
+  transition: color $transition-base;
+
+  &:hover {
+    color: var(--primary-base) !important;
+  }
+}
+
+.nav-link {
+  color: var(--text-secondary);
+  font-weight: $font-weight-medium;
+  transition: all $transition-base;
+  padding: 0.5rem 1rem !important;
+  border-radius: $radius-sm;
+  background-color: transparent !important;
+
+  &:hover {
+    color: var(--primary-base);
+    background-color: var(--bg-hover) !important;
+  }
+
+  &.active {
+    background-color: var(--primary-base) !important;
+    background-image: none !important;
+    color: var(--text-inverse) !important;
+    font-weight: $font-weight-semibold;
+  }
+}
+.dropdown-toggle {
+  &::after {
+    margin-left: 0.5rem;
+    vertical-align: 0.15em;
+  }
+}
+
+.dropdown-menu {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  border-radius: $radius-md;
+  box-shadow: var(--shadow-lg);
+  padding: 0.5rem 0;
+  margin-top: 0.5rem;
+  min-width: 200px;
+  transition: background-color $transition-base, border-color $transition-base, box-shadow $transition-base;
+
+  &[data-bs-popper] {
+    margin-top: 0.5rem;
+  }
+}
+
+.dropdown-item {
+  color: var(--text-primary);
+  padding: 0.625rem 1rem;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-normal;
+  transition: background-color $transition-fast, color $transition-fast;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  &:hover,
+  &:focus {
+    background-color: var(--bg-hover);
+    color: var(--text-primary);
+  }
+
+  &:active {
+    background-color: var(--primary-base);
+    color: var(--text-inverse);
+  }
+
+  
+  i {
+    font-size: 1rem;
+    width: 1.25rem;
+    text-align: center;
+  }
+}
+
+.dropdown-item-text {
+  color: var(--text-secondary);
+  font-size: $font-size-sm;
+  padding: 0.5rem 1rem;
+  font-weight: $font-weight-medium;
+}
+
+.dropdown-divider {
+  margin: 0.5rem 0;
+  border-top-color: var(--border-primary);
+  opacity: 0.5;
+}
+
+.dropdown-menu .btn {
+  margin: 0;
+  border-radius: $radius-sm;
+  font-weight: $font-weight-medium;
+  transition: all $transition-base;
+
+  &.btn-danger {
+    background-color: var(--error);
+    border-color: var(--error);
+    color: var(--text-inverse);
+
+    &:hover {
+      background-color: var(--error);
+      opacity: 0.9;
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+.dropdown-header {
+  color: var(--text-secondary);
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.5rem 1rem 0.25rem;
+  margin-bottom: 0.25rem;
+}
+.navbar-toggler {
+  border: 1px solid var(--border-primary);
+  border-radius: $radius-sm;
+  padding: 0.375rem 0.75rem;
+  transition: background-color $transition-base, border-color $transition-base;
+
+  &:hover {
+    background-color: var(--bg-hover);
+    border-color: var(--border-secondary);
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba(var(--primary-base), 0.25);
+    outline: none;
+  }
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(15, 23, 42, 0.75)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  transition: opacity $transition-base;
+}
+
+[data-bs-theme="dark"] .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(248, 250, 252, 0.75)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+.navbar-collapse {
+  transition: height $transition-base ease-in-out;
+}
+.theme-icon {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: $radius-sm;
+  transition: all $transition-base;
+  display: inline-block;
+
+  &:hover {
+    color: var(--primary-base);
+    background-color: var(--bg-hover);
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+.nav-item.auth-buttons {
+  display: flex !important;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.nav-item.auth-buttons .btn {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  flex-shrink: 0;
+}
+
+.nav-item.auth-buttons .btn.btn-outline {
+  margin-right: 1rem !important;
+}
+
+.navbar-nav .nav-item.auth-buttons .btn.btn-outline {
+  margin-right: 1rem !important;
+}
+
+.navbar-nav .nav-item.auth-buttons .btn.btn-primary {
+  margin-left: 0 !important;
+}
+
+@media (min-width: 992px) {
+  .nav-item.auth-buttons .btn.btn-outline {
+    margin-right: 1rem !important;
+  }
+  
+  .navbar-nav .nav-item.auth-buttons .btn.btn-outline {
+    margin-right: 1rem !important;
+  }
+}
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    margin-top: 1rem !important;
+    padding: 1.25rem !important;
+    border-top: 1px solid var(--border-primary) !important;
+    background: linear-gradient(to bottom, var(--bg-secondary), var(--bg-primary)) !important;
+    border-radius: $radius-lg !important;
+    box-shadow: var(--shadow-md) !important;
+    animation: slideDown 0.3s ease-out;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .navbar-collapse .navbar-nav {
+    gap: 0.75rem !important;
+    width: 100% !important;
+  }
+
+  .navbar-collapse .nav-item {
+    width: 100% !important;
+    margin-bottom: 0 !important;
+  }
+
+  .navbar-collapse .nav-link {
+    width: 100% !important;
+    padding: 1rem 1.5rem !important;
+    border-radius: $radius-md !important;
+    font-size: $font-size-base !important;
+    font-weight: $font-weight-medium !important;
+    color: var(--text-primary) !important;
+    background-color: var(--bg-secondary) !important;
+    transition: all $transition-base !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 0.875rem !important;
+    position: relative !important;
+    overflow: hidden !important;
+    box-shadow: var(--shadow-sm) !important;
+    border: 1px solid var(--border-primary) !important;
+    margin: 0 !important;
+
+    &:hover {
+      background-color: var(--bg-hover) !important;
+      background-image: none !important;
+      color: var(--primary-base) !important;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-base) !important;
+    }
+
+    &:active {
+      background-color: var(--bg-hover) !important;
+      background-image: none !important;
+      color: var(--primary-base) !important;
+    }
+
+    &.active {
+      background-color: var(--primary-base) !important;
+      background-image: none !important;
+      color: var(--text-inverse) !important;
+      font-weight: $font-weight-semibold;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+      transform: translateY(-2px);
+      border-color: var(--primary-base) !important;
+    }
+
+    
+    i {
+      font-size: 1.125rem;
+      width: 1.5rem;
+      text-align: center;
+      z-index: 1;
+      position: relative;
+    }
+  }
+
+  
+  .navbar-collapse .auth-buttons {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    gap: 1rem !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  
+  .navbar-collapse .navbar-nav .btn {
+    margin: 0 !important;
+    padding: 1rem 1.5rem !important;
+    border-radius: $radius-md !important;
+    font-weight: $font-weight-semibold !important;
+    transition: all $transition-base !important;
+    box-shadow: var(--shadow-sm) !important;
+    flex: 1 !important;
+    justify-content: center !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    border: 1px solid transparent !important;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    &.btn-primary {
+      background-color: var(--primary-base) !important;
+      background-image: none !important;
+      border: none !important;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3) !important;
+
+      &:hover {
+        background-color: var(--primary-dark) !important;
+        background-image: none !important;
+        box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4) !important;
+      }
+
+      &:active {
+        background-color: var(--primary-dark) !important;
+        background-image: none !important;
+      }
+    }
+
+    &.btn-outline {
+      border: 2px solid var(--border-secondary) !important;
+      background-color: var(--bg-secondary) !important;
+      background-image: none !important;
+
+      &:hover {
+        background-color: var(--bg-hover) !important;
+        background-image: none !important;
+        border-color: var(--primary-base) !important;
+        color: var(--primary-base) !important;
+      }
+
+      &:active {
+        background-color: var(--bg-hover) !important;
+        background-image: none !important;
+      }
+    }
+  }
+
+  
+  .navbar-collapse .theme-icon {
+    font-size: 1.5rem !important;
+    color: var(--text-secondary) !important;
+    cursor: pointer !important;
+    padding: 0.75rem !important;
+    border-radius: $radius-md !important;
+    transition: all $transition-base !important;
+    display: inline-block !important;
+
+    &:hover {
+      color: var(--primary-base) !important;
+      background-color: var(--bg-hover) !important;
+      transform: scale(1.1) !important;
+    }
+  }
+
+  
+  .dropdown {
+    width: 100%;
+  }
+
+  .navbar-collapse .dropdown-toggle {
+    width: 100% !important;
+    justify-content: space-between !important;
+    padding: 1rem 1.5rem !important;
+    border-radius: $radius-md !important;
+    background-color: var(--bg-secondary) !important;
+    background-image: none !important;
+    border: 1px solid var(--border-primary) !important;
+    margin: 0 !important;
+    box-shadow: var(--shadow-sm) !important;
+
+    &::after {
+      margin-left: auto;
+    }
+
+    &:hover {
+      background-color: var(--bg-hover) !important;
+      background-image: none !important;
+      border-color: var(--primary-base) !important;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    &:active {
+      background-color: var(--bg-hover) !important;
+      background-image: none !important;
+    }
+  }
+
+  .dropdown-menu {
+    position: static !important;
+    transform: none !important;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-primary);
+    border-radius: $radius-md;
+    margin-top: 0.75rem;
+    background-color: var(--bg-secondary);
+    padding: 0.75rem;
+    animation: fadeIn 0.2s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .dropdown-item {
+    padding: 0.875rem 1.25rem;
+    border-radius: $radius-sm;
+    font-size: $font-size-base;
+    margin: 0.25rem 0;
+    background-color: transparent;
+    border: 1px solid transparent;
+    transition: all $transition-base;
+
+    &:hover {
+      background-color: var(--bg-hover);
+      transform: translateX(4px);
+      border-color: var(--border-primary);
+    }
+
+    &:active {
+      background-color: var(--primary-base);
+      color: var(--text-inverse);
+    }
+  }
+
+  .dropdown-divider {
+    margin: 0.75rem 0;
+    opacity: 0.3;
+  }
+
+  
+  .dropdown-item-text {
+    padding: 0.75rem 1.25rem;
+    font-size: $font-size-sm;
+    margin: 0.25rem 0;
+    background-color: var(--bg-hover);
+    border-radius: $radius-sm;
+    border: 1px solid var(--border-primary);
+  }
+
+  
+  .dropdown-menu .btn-danger {
+    margin: 0.5rem 0 0 0;
+    padding: 1rem 1.5rem;
+    border-radius: $radius-md;
+    font-weight: $font-weight-semibold;
+    box-shadow: var(--shadow-sm);
+    width: 100%;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+  }
+
+  
+  .navbar-brand {
+    font-size: $font-size-xl;
+    padding: 0.5rem 0;
+  }
+
+  
+  .navbar-collapse.show {
+    animation: slideDown 0.3s ease-out;
+  }
+}

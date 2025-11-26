@@ -1,0 +1,17 @@
+.hero-section.p-5.mb-4.rounded-3
+  .container-fluid.py-5
+    h1.display-5.fw-bold = I18n.t('screener.home.hero.title')
+    p.col-md-8.fs-4 = I18n.t('screener.home.hero.subtitle')
+    button.btn.btn-primary.btn-lg type="button" = I18n.t('screener.home.hero.button')
+
+.row.align-items-md-stretch
+  .col-md-6
+    .feature-card.feature-card-primary.h-100.p-5.rounded-3
+      h2 = I18n.t('screener.home.athletes.title')
+      p = I18n.t('screener.home.athletes.description')
+      button.btn.btn-outline-light type="button" = I18n.t('screener.home.athletes.button')
+  .col-md-6
+    .feature-card.feature-card-secondary.h-100.p-5.border.rounded-3
+      h2 = I18n.t('screener.home.teams.title')
+      p = I18n.t('screener.home.teams.description')
+      button.btn.btn-outline-secondary type="button" = I18n.t('screener.home.teams.button')

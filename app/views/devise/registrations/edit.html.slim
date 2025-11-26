@@ -1,0 +1,45 @@
+.auth-container
+  .auth-card
+    .card-body
+      .text-center.mb-4
+        h2.h3.font-bold = I18n.t('devise.registrations.edit.title')
+        p.text-muted = I18n.t('devise.registrations.edit.subtitle')
+
+      = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'auth-form' }) do |f|
+        = render "devise/shared/error_messages", resource: resource
+
+        .form-group
+          = f.label :email, I18n.t('devise.registrations.edit.email'), class: 'form-label required'
+          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "your@email.com", class: 'form-control'
+
+        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          .alert.alert-info
+            = I18n.t('devise.registrations.edit.waiting_confirmation', email: resource.unconfirmed_email)
+
+        .form-group
+          = f.label :password, I18n.t('devise.registrations.edit.new_password'), class: 'form-label'
+          span.text-muted.text-sm = I18n.t('devise.registrations.edit.new_password_hint')
+          = f.password_field :password, autocomplete: "new-password", placeholder: "••••••••", class: 'form-control'
+          - if @minimum_password_length
+            small.form-text = I18n.t('devise.registrations.edit.password_minimum', count: @minimum_password_length)
+
+        .form-group
+          = f.label :password_confirmation, I18n.t('devise.registrations.edit.password_confirmation'), class: 'form-label'
+          = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "••••••••", class: 'form-control'
+
+        .form-group
+          = f.label :current_password, I18n.t('devise.registrations.edit.current_password'), class: 'form-label required'
+          span.text-muted.text-sm = I18n.t('devise.registrations.edit.current_password_hint')
+          = f.password_field :current_password, autocomplete: "current-password", placeholder: "••••••••", class: 'form-control'
+
+        .form-group
+          = f.submit I18n.t('devise.registrations.edit.submit'), class: 'btn-primary btn-block btn-lg'
+
+      .text-center.mt-4
+        = render "devise/shared/links"
+
+      .mt-5.pt-4.border-top
+        h3.h5.font-semibold.mb-3 = I18n.t('devise.registrations.edit.cancel_account')
+        p.text-muted.text-sm.mb-3 = I18n.t('devise.registrations.edit.cancel_account_description')
+        = button_to I18n.t('devise.registrations.edit.cancel_account'), registration_path(resource_name), data: { confirm: I18n.t('devise.registrations.edit.cancel_account_confirm'), turbo_confirm: I18n.t('devise.registrations.edit.cancel_account_confirm') }, method: :delete, class: 'btn-danger btn-block'
+

@@ -1,0 +1,26 @@
+.auth-container
+  .auth-card
+    .card-body
+      .text-center.mb-4
+        h2.h3.font-bold = I18n.t('devise.passwords.edit.title')
+
+      = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: 'auth-form' }) do |f|
+        = render "devise/shared/error_messages", resource: resource
+        = f.hidden_field :reset_password_token
+
+        .form-group
+          = f.label :password, I18n.t('devise.passwords.edit.new_password'), class: 'form-label required'
+          - if @minimum_password_length
+            span.text-muted.text-sm = "(#{I18n.t('devise.passwords.edit.password_minimum', count: @minimum_password_length)})"
+          = f.password_field :password, autofocus: true, autocomplete: "new-password", placeholder: "••••••••", class: 'form-control'
+
+        .form-group
+          = f.label :password_confirmation, I18n.t('devise.passwords.edit.password_confirmation'), class: 'form-label required'
+          = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "••••••••", class: 'form-control'
+
+        .form-group
+          = f.submit I18n.t('devise.passwords.edit.submit'), class: 'btn-primary btn-block btn-lg'
+
+      .text-center.mt-4
+        = render "devise/shared/links"
+

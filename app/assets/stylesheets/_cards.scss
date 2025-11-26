@@ -1,0 +1,94 @@
+@use 'variables' as *;
+
+.card {
+    border-radius: $radius-lg;
+    border: 1px solid var(--border-primary);
+    background-color: var(--bg-card);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition: all $transition-base;
+
+    &:hover {
+        box-shadow: var(--shadow-md);
+    }
+}
+
+.card-header {
+    padding: $spacing-lg;
+    border-bottom: 1px solid var(--border-primary);
+    background-color: var(--bg-secondary);
+}
+
+.card-body {
+    padding: $spacing-lg;
+}
+
+.card-footer {
+    padding: $spacing-lg;
+    border-top: 1px solid var(--border-primary);
+    background-color: var(--bg-secondary);
+}
+
+.card-elevated {
+    box-shadow: var(--shadow-md);
+}
+
+.card-bordered {
+    border-width: 2px;
+}
+
+.auth-card {
+    @extend .card;
+    max-width: 480px;
+    margin: 0 auto;
+    box-shadow: var(--shadow-lg);
+}
+
+.hero-section {
+    transition: all $transition-base;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.feature-card {
+    transition: all $transition-base;
+}
+
+.feature-card-primary {
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+
+    [data-theme="light"] & {
+        background-color: var(--primary-dark); 
+        color: #fff;
+
+        h2,
+        p {
+            color: #fff;
+        }
+    }
+
+    [data-theme="dark"] & {
+        background-color: var(--bg-card);
+        color: var(--text-primary);
+        border: 1px solid var(--border-primary);
+
+        h2 {
+            color: var(--text-primary);
+        }
+
+        p {
+            color: var(--text-secondary);
+        }
+    }
+}
+
+.feature-card-secondary {
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    border: 1px solid var(--border-primary);
+
+    [data-theme="dark"] & {
+        background-color: var(--bg-secondary);
+    }
+}

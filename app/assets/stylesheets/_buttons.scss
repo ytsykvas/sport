@@ -1,0 +1,156 @@
+@use 'sass:color';
+@use 'variables' as *;
+
+.btn-custom,
+.btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: $spacing-sm !important;
+    padding: $spacing-sm $spacing-lg !important;
+    font-family: $font-family-base !important;
+    font-size: $font-size-base !important;
+    font-weight: $font-weight-medium !important;
+    line-height: $line-height-normal !important;
+    border: 2px solid transparent !important;
+    border-radius: 9999px !important; 
+    cursor: pointer !important;
+    transition: all $transition-base !important;
+    text-decoration: none !important;
+    user-select: none !important;
+
+    &::after {
+        display: none !important;
+        content: none !important;
+    }
+
+    &:hover {
+        text-decoration: none !important;
+
+        &::after {
+            display: none !important;
+            content: none !important;
+        }
+    }
+
+    &:focus {
+        text-decoration: none !important;
+    }
+
+    &:active {
+        text-decoration: none !important;
+    }
+
+    &:disabled {
+        opacity: 0.5 !important;
+        cursor: not-allowed !important;
+    }
+
+    &:focus-visible {
+        outline: 3px solid rgba(37, 99, 235, 0.3) !important;
+        outline-offset: 2px !important;
+    }
+}
+
+.btn-primary {
+    @extend .btn-custom;
+    color: white !important;
+    background-color: var(--primary-base) !important;
+    border-color: var(--primary-base) !important;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3) !important;
+
+    &:hover:not(:disabled),
+    &:focus:not(:disabled) {
+        background-color: var(--primary-dark) !important;
+        border-color: var(--primary-dark) !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4) !important;
+    }
+
+    &:active:not(:disabled) {
+        background-color: var(--primary-dark) !important;
+        border-color: var(--primary-dark) !important;
+        transform: translateY(0) !important;
+        box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3) !important;
+    }
+}
+
+.btn-secondary {
+    @extend .btn-custom;
+    color: white;
+    background-color: var(--secondary-base);
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+
+    &:hover:not(:disabled) {
+        background-color: var(--secondary-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+    }
+
+    &:active:not(:disabled) {
+        transform: translateY(0);
+        box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+    }
+}
+
+.btn-outline {
+    @extend .btn-custom;
+    border-color: currentColor;
+    color: var(--text-primary);
+    background: transparent;
+
+    &:hover:not(:disabled) {
+        background: var(--bg-hover);
+        transform: translateY(-2px);
+    }
+}
+
+.btn-ghost {
+    @extend .btn-custom;
+    background: transparent;
+    color: var(--text-secondary);
+
+    &:hover:not(:disabled) {
+        background: var(--bg-hover);
+        color: var(--text-primary);
+    }
+}
+
+.btn-danger {
+    @extend .btn-custom;
+    color: white;
+    background: linear-gradient(135deg, var(--error) 0%, color.adjust(#ef4444, $lightness: -10%) 100%);
+    box-shadow: 0 4px 14px rgba(239, 68, 68, 0.3);
+
+    &:hover:not(:disabled) {
+        background: linear-gradient(135deg, color.adjust(#ef4444, $lightness: -10%) 0%, color.adjust(#ef4444, $lightness: -20%) 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+    }
+
+    &:active:not(:disabled) {
+        background: linear-gradient(135deg, color.adjust(#ef4444, $lightness: -20%) 0%, color.adjust(#ef4444, $lightness: -25%) 100%);
+        transform: translateY(0);
+        box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+    }
+}
+
+.btn-sm {
+    padding: $spacing-xs $spacing-md;
+    font-size: $font-size-sm;
+}
+
+.btn-lg {
+    padding: $spacing-md $spacing-xl;
+    font-size: $font-size-lg;
+    border-radius: 9999px !important; 
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.btn-icon {
+    padding: $spacing-sm;
+    aspect-ratio: 1;
+}

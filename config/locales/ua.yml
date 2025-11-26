@@ -1,0 +1,191 @@
+ua:
+  hello: "Привіт, світ"
+  site_name: "Спорт"
+  
+  errors:
+    messages:
+      not_saved:
+        one: "1 помилка завадила зберегти цей %{resource}:"
+        other: "%{count} помилок завадили зберегти цей %{resource}:"
+      taken: "вже зайнятий"
+      blank: "не може бути порожнім"
+      invalid: "некоректний"
+      too_short: "занадто короткий (мінімум %{count} символів)"
+      too_long: "занадто довгий (максимум %{count} символів)"
+      confirmation: "не співпадає з підтвердженням"
+  
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              taken: "вже зайнятий"
+            password:
+              too_short: "занадто короткий (мінімум %{count} символів)"
+      messages:
+        taken: "вже зайнятий"
+        blank: "не може бути порожнім"
+        invalid: "некоректний"
+        too_short: "занадто короткий (мінімум %{count} символів)"
+        too_long: "занадто довгий (максимум %{count} символів)"
+        confirmation: "не співпадає з підтвердженням"
+  
+  # Roles
+  roles:
+    admin: "Адміністратор"
+    customer: "Клієнт"
+    owner: "Власник"
+    employee: "Співробітник"
+    manager: "Менеджер"
+  
+  # Devise - Authentication
+  devise:
+    sessions:
+      new:
+        title: "Вхід"
+        subtitle: "Ласкаво просимо назад!"
+        email: "Email"
+        password: "Пароль"
+        remember_me: "Запам'ятати мене"
+        submit: "Увійти"
+    registrations:
+      new:
+        title: "Реєстрація"
+        subtitle: "Створіть свій акаунт"
+        register_company: "Зареєструвати компанію"
+        register_company_description: "Я хочу здавати об'єкти в оренду, а не шукати"
+        name: "Ім'я"
+        email: "Email"
+        password: "Пароль"
+        password_confirmation: "Підтвердіть пароль"
+        role: "Роль"
+        submit: "Зареєструватися"
+        password_minimum: " (мінімум %{count} символів)"
+      edit:
+        title: "Редагувати профіль"
+        subtitle: "Оновіть інформацію про свій акаунт"
+        email: "Email"
+        new_password: "Новий пароль"
+        new_password_hint: " (залиште порожнім, якщо не хочете змінювати)"
+        password_confirmation: "Підтвердіть новий пароль"
+        current_password: "Поточний пароль"
+        current_password_hint: " (потрібен для підтвердження змін)"
+        submit: "Оновити"
+        cancel_account: "Скасувати акаунт"
+        cancel_account_description: "Нездоволені? Ви можете видалити свій акаунт."
+        cancel_account_confirm: "Ви впевнені? Цю дію неможливо скасувати!"
+        waiting_confirmation: "Очікується підтвердження для: %{email}"
+        password_minimum: "%{count} символів мінімум"
+    passwords:
+      new:
+        title: "Забули пароль?"
+        email: "Email"
+        submit: "Надіслати інструкції для скидання пароля"
+      edit:
+        title: "Змінити пароль"
+        new_password: "Новий пароль"
+        password_confirmation: "Підтвердіть новий пароль"
+        submit: "Змінити пароль"
+        password_minimum: "%{count} символів мінімум"
+    confirmations:
+      new:
+        title: "Повторно надіслати інструкції з підтвердження"
+        email: "Email"
+        submit: "Надіслати інструкції з підтвердження"
+    unlocks:
+      new:
+        title: "Повторно надіслати інструкції з розблокування"
+        email: "Email"
+        submit: "Надіслати інструкції з розблокування"
+    mailer:
+      confirmation_instructions:
+        welcome: "Ласкаво просимо %{email}!"
+        message: "Ви можете підтвердити email вашого акаунту за посиланням нижче:"
+        link: "Підтвердити мій акаунт"
+      email_changed:
+        hello: "Привіт %{email}!"
+        being_changed: "Ми повідомляємо вас, що ваш email змінюється на %{email}."
+        changed: "Ми повідомляємо вас, що ваш email було змінено на %{email}."
+      password_change:
+        hello: "Привіт %{email}!"
+        message: "Ми повідомляємо вас, що ваш пароль було змінено."
+      reset_password_instructions:
+        hello: "Привіт %{email}!"
+        message: "Хтось запросив посилання для зміни вашого пароля. Ви можете зробити це за посиланням нижче."
+        link: "Змінити мій пароль"
+        ignore: "Якщо ви не робили цього запиту, будь ласка, проігноруйте цей email."
+        note: "Ваш пароль не зміниться, поки ви не перейдете за посиланням вище та не створите новий."
+      unlock_instructions:
+        hello: "Привіт %{email}!"
+        message: "Ваш акаунт було заблоковано через надмірну кількість невдалих спроб входу."
+        link_message: "Натисніть посилання нижче, щоб розблокувати ваш акаунт:"
+        link: "Розблокувати мій акаунт"
+    shared:
+      links:
+        already_have_account: "Вже маєте акаунт?"
+        sign_in: "Увійти"
+        no_account: "Ще немає акаунту?"
+        sign_up: "Зареєструватися"
+        forgot_password: "Забули пароль?"
+        no_confirmation: "Не отримали інструкції з підтвердження?"
+        no_unlock: "Не отримали інструкції з розблокування?"
+        sign_in_with: "Увійти через %{provider}"
+  
+  # CRM
+  crm:
+    dashboard: "Дашборд"
+    listings: "Оголошення"
+    settings: "Налаштування"
+    navbar:
+      dashboard: "Дашборд"
+      listings: "Оголошення"
+      settings: "Налаштування"
+    dashboard:
+      title: "Дашборд"
+      share: "Поділитися"
+      export: "Експорт"
+      listings:
+        title: "Оголошення"
+        header: "Оголошення"
+        active: "%{count} Активних"
+        description: "У вас є %{count} активних оголошень, видимих клієнтам."
+      bookings:
+        title: "Бронювання"
+        header: "Бронювання"
+        new: "%{count} Нових"
+        description: "У вас є %{count} нових бронювань для перегляду."
+      revenue:
+        title: "Доходи"
+        header: "Доходи"
+        amount: "$%{amount}"
+        description: "Доходи, згенеровані цього місяця."
+  
+  # Screener
+  screener:
+    home: "Головна"
+    search: "Пошук"
+    navbar:
+      home: "Головна"
+      search: "Пошук"
+      company: "Компанія"
+      bookings: "Мої бронювання"
+      profile: "Профіль"
+      settings: "Налаштування"
+      theme: "Тема"
+      sign_out: "Вийти"
+      sign_in: "Увійти"
+      sign_up: "Реєстрація"
+    home:
+      hero:
+        title: "Знайдіть свій спорт"
+        subtitle: "Шукайте найкращі спортивні об'єкти та оренду обладнання поблизу вас."
+        button: "Почати пошук"
+      athletes:
+        title: "Для спортсменів"
+        description: "Знайдіть корти, поля та тренажерні зали, доступні для миттєвого бронювання."
+        button: "Переглянути об'єкти"
+      teams:
+        title: "Для команд"
+        description: "Організуйте події та турніри вашої команди з легкістю."
+        button: "Послуги для команд"

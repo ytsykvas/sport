@@ -1,0 +1,46 @@
+nav.navbar.navbar-expand-lg.shadow-sm data-controller="navbar"
+  .container-fluid
+    = link_to I18n.t('site_name'), root_path, class: 'navbar-brand fw-bold'
+    
+    button.navbar-toggler type="button" data-navbar-target="toggle" data-action="click->navbar#toggle" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
+      span.navbar-toggler-icon
+    
+    .collapse.navbar-collapse#navbarNav data-navbar-target="menu"
+      ul.navbar-nav.me-auto.mb-2.mb-lg-0
+        li.nav-item
+          = link_to root_path, class: "nav-link #{active_nav_class('/')}" do
+            i.bi.bi-house-door.me-1
+            = I18n.t('screener.navbar.home')
+        li.nav-item
+          = link_to '#', class: "nav-link #{active_nav_class('/search')}" do
+            i.bi.bi-search.me-1
+            = I18n.t('screener.navbar.search')
+        
+        - if signed_in?
+          - if admin?
+            li.nav-item
+              = link_to '#', class: "nav-link #{active_nav_class('/admin')}" do
+                i.bi.bi-speedometer2.me-1
+                = I18n.t('crm.navbar.dashboard')
+          
+          - if owner? || @current_user&.company.present?
+            li.nav-item
+              = link_to '#', class: "nav-link #{active_nav_class('/company')}" do
+                i.bi.bi-building.me-1
+                = I18n.t('screener.navbar.company')
+      
+      ul.navbar-nav.ms-auto
+        - if signed_in?
+          li.nav-item.me-4
+            = link_to '#', class: 'nav-link p-0 d-flex align-items-center', title: 'Toggle theme', data: { controller: 'theme', action: 'click->theme#toggle', theme_target: 'toggle' } do
+              i.bi.bi-moon-stars-fill.fs-3
+              span.d-lg-none.ms-2 = I18n.t('screener.navbar.theme')
+          li.nav-item.me-2
+            = link_to '#', class: 'nav-link p-0 d-flex align-items-center', title: user_name do
+              i.bi.bi-person-circle.fs-3
+              span.d-lg-none.ms-2 = I18n.t('screener.navbar.profile')
+          li.nav-item.d-flex.align-items-center
+            = link_to I18n.t('screener.navbar.sign_out'), destroy_user_session_path, data: { turbo_method: :delete }, class: 'btn btn-danger btn-sm text-white'
+        - else
+          li.nav-item.auth-buttons
+            = link_to I18n.t('screener.navbar.sign_in'), new_user_session_path, class: 'btn btn-primary btn-sm'
