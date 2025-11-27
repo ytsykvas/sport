@@ -24,6 +24,14 @@ ua:
         password: "Пароль"
         password_confirmation: "Підтвердження паролю"
     errors:
+      messages:
+        record_invalid: "Помилка валідації: %{errors}"
+        taken: "вже зайнятий"
+        blank: "не може бути порожнім"
+        invalid: "некоректний"
+        too_short: "занадто короткий (мінімум %{count} символів)"
+        too_long: "занадто довгий (максимум %{count} символів)"
+        confirmation: "не співпадає з підтвердженням"
       models:
         user:
           attributes:
@@ -32,13 +40,6 @@ ua:
               blank: "не може бути порожня"
             password:
               too_short: "занадто короткий (мінімум %{count} символів)"
-      messages:
-        taken: "вже зайнятий"
-        blank: "не може бути порожнім"
-        invalid: "некоректний"
-        too_short: "занадто короткий (мінімум %{count} символів)"
-        too_long: "занадто довгий (максимум %{count} символів)"
-        confirmation: "не співпадає з підтвердженням"
   
   # Roles
   roles:

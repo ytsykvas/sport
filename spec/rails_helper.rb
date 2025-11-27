@@ -72,6 +72,18 @@ RSpec.configure do |config|
 
   # Include FactoryBot methods
   config.include FactoryBot::Syntax::Methods
+
+  # Configure Faker
+  config.before(:suite) do
+    Faker::Config.locale = 'en'
+    # Reset Faker unique sequences before test suite
+    Faker::UniqueGenerator.clear
+  end
+
+  config.after(:each) do
+    # Clear Faker unique sequences after each test to avoid conflicts
+    Faker::UniqueGenerator.clear
+  end
 end
 
 # Shoulda::Matchers configuration

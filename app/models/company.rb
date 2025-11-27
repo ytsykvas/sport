@@ -6,13 +6,15 @@ class Company < ApplicationRecord
   # Validations
   validates :name, presence: true
   validates :owner, presence: true
-  validate :owner_must_have_owner_role, unless: -> { owner&.new_record? }
+  validate :owner_must_have_owner_role
 
   private
 
   def owner_must_have_owner_role
-    if owner.present? && owner.persisted? && !owner.owner?
-      errors.add(:owner, "must have 'owner' role")
-    end
+    return if owner.blank?
+    return if owner.new_record? && owner.role == "owner"
+    return if owner.persisted? && owner.owner?
+
+    errors.add(:owner, "must have 'owner' role")
   end
 end

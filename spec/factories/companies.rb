@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :company do
-    sequence(:name) { |n| "Company #{n}" }
+    name { Faker::Company.name }
 
     # Build owner separately and set up the relationship in callback
     transient do
@@ -26,6 +26,17 @@ FactoryBot.define do
 
     trait :with_managers do
       after(:create) do |company|
+        create_list(:user, 2, :manager, company: company)
+      end
+    end
+
+    trait :tech_company do
+      name { "#{Faker::Company.name} #{[ 'Inc.', 'LLC', 'Corp.', 'Tech' ].sample}" }
+    end
+
+    trait :with_full_team do
+      after(:create) do |company|
+        create_list(:user, 5, :employee, company: company)
         create_list(:user, 2, :manager, company: company)
       end
     end

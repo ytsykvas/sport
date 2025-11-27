@@ -21,10 +21,13 @@ module Sport
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
-    # config.time_zone = "Central Time (US & Canada)"
-    # config.eager_load_paths << Rails.root.join("extras")
+    # Time zone configuration
+    config.time_zone = "Kyiv"
+    config.active_record.default_timezone = :local
 
+    # Internationalization configuration
     config.i18n.available_locales = [ :en, :ua ]
     config.i18n.default_locale = :ua
+    config.i18n.fallbacks = [ :en ]
   end
 end
