@@ -1,0 +1,75 @@
+.sidebar-container data-controller="navbar"
+  / Top navbar for small screens
+  nav.sidebar-navbar.navbar.navbar-expand-lg.shadow-sm
+    .container-fluid
+      = link_to I18n.t('site_name'), root_path, class: 'navbar-brand fw-bold'
+      
+      button.navbar-toggler type="button" data-navbar-target="toggle" data-action="click->navbar#toggle" aria-controls="sidebarNav" aria-expanded="false" aria-label="Toggle navigation"
+        span.navbar-toggler-icon
+      
+      .collapse.navbar-collapse#sidebarNav data-navbar-target="menu"
+        ul.navbar-nav.me-auto.mb-2.mb-lg-0
+          li.nav-item
+            = link_to '#', class: "nav-link #{active_nav_class('/crm/dashboard')}" do
+              i.bi.bi-speedometer2.me-1
+              = I18n.t('crm.navbar.dashboard')
+          li.nav-item
+            = link_to '#', class: "nav-link #{active_nav_class('/crm/listings')}" do
+              i.bi.bi-list-ul.me-1
+              = I18n.t('crm.navbar.listings')
+          li.nav-item
+            = link_to '#', class: "nav-link #{active_nav_class('/crm/bookings')}" do
+              i.bi.bi-calendar-check.me-1
+              = I18n.t('crm.dashboard.bookings.title')
+          li.nav-item
+            = link_to '#', class: "nav-link #{active_nav_class('/crm/settings')}" do
+              i.bi.bi-gear.me-1
+              = I18n.t('crm.navbar.settings')
+        
+        ul.navbar-nav.ms-auto
+          - if signed_in?
+            li.nav-item.me-4
+              = link_to '#', class: 'nav-link p-0 d-flex align-items-center', title: 'Toggle theme', data: { controller: 'theme', action: 'click->theme#toggle', theme_target: 'toggle' } do
+                i.bi.bi-moon-stars-fill.fs-3
+                span.d-lg-none.ms-2 = I18n.t('screener.navbar.theme')
+            li.nav-item.me-2
+              = link_to '#', class: 'nav-link p-0 d-flex align-items-center', title: user_name do
+                i.bi.bi-person-circle.fs-3
+                span.d-lg-none.ms-2 = I18n.t('screener.navbar.profile')
+            li.nav-item.d-flex.align-items-center
+              = link_to I18n.t('screener.navbar.sign_out'), destroy_user_session_path, data: { turbo_method: :delete }, class: 'btn btn-danger btn-sm text-white'
+
+  / Vertical sidebar for large screens
+  .sidebar-vertical
+    .sidebar-header.p-3
+      h5.mb-0 = "#{I18n.t('site_name')} CRM"
+    
+    .sidebar-body.p-3
+      ul.nav.flex-column
+        li.nav-item.mb-2
+          = link_to '#', class: "nav-link d-flex align-items-center #{active_nav_class('/crm/dashboard')}" do
+            i.bi.bi-speedometer2.me-2.fs-5
+            span = I18n.t('crm.navbar.dashboard')
+        li.nav-item.mb-2
+          = link_to '#', class: "nav-link d-flex align-items-center #{active_nav_class('/crm/listings')}" do
+            i.bi.bi-list-ul.me-2.fs-5
+            span = I18n.t('crm.navbar.listings')
+        li.nav-item.mb-2
+          = link_to '#', class: "nav-link d-flex align-items-center #{active_nav_class('/crm/bookings')}" do
+            i.bi.bi-calendar-check.me-2.fs-5
+            span = I18n.t('crm.dashboard.bookings.title')
+        li.nav-item.mb-2
+          = link_to '#', class: "nav-link d-flex align-items-center #{active_nav_class('/crm/settings')}" do
+            i.bi.bi-gear.me-2.fs-5
+            span = I18n.t('crm.navbar.settings')
+    
+    - if signed_in?
+      .sidebar-footer.mt-auto.p-3
+        .d-flex.flex-column.gap-3
+          = link_to '#', class: 'btn btn-outline-secondary btn-sm d-flex align-items-center justify-content-center', title: 'Toggle theme', data: { controller: 'theme', action: 'click->theme#toggle', theme_target: 'toggle' } do
+            i.bi.bi-moon-stars-fill.me-2
+            span = I18n.t('screener.navbar.theme')
+          = link_to '#', class: 'btn btn-outline-secondary btn-sm d-flex align-items-center justify-content-center', title: user_name do
+            i.bi.bi-person-circle.me-2
+            span = user_name
+          = link_to I18n.t('screener.navbar.sign_out'), destroy_user_session_path, data: { turbo_method: :delete }, class: 'btn btn-danger btn-sm text-white'
