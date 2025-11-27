@@ -4,14 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  # Enums
   enum :role, { admin: 0, customer: 1, owner: 2, employee: 3, manager: 4 }
 
-  # Associations
   belongs_to :company, optional: true
   has_one :owned_company, class_name: "Company", foreign_key: "owner_id", dependent: :destroy
 
-  # Validations
   validates :name, presence: true
   validate :company_required_for_certain_roles
   validate :owner_can_have_only_one_company

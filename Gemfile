@@ -61,6 +61,9 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 
+  # Load environment variables from .env file
+  gem "dotenv-rails"
+
   gem "rspec-rails"
 end
 
@@ -75,4 +78,5 @@ group :test do
   gem "selenium-webdriver"
   gem "factory_bot_rails"
   gem "shoulda-matchers"
+  gem "faker"
 end

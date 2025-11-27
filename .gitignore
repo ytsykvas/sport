@@ -9,6 +9,9 @@
 
 # Ignore all environment files.
 /.env*
+.env
+.env.local
+.env.*.local
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -28,10 +31,228 @@
 !/tmp/storage/
 !/tmp/storage/.keep
 
+# Ignore uploaded files in development
+/public/uploads
+/public/system
+
+# Ignore precompiled assets
 /public/assets
+/public/packs
+/public/packs-test
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+/config/credentials/*.key
 
+# Ignore build files
 /app/assets/builds/*
 !/app/assets/builds/.keep
+
+# Database files
+*.sqlite3
+*.sqlite3-*
+/db/*.sqlite3
+/db/*.sqlite3-*
+
+# Ruby/Rails
+*.gem
+*.rbc
+/.config
+/coverage/
+/InstalledFiles
+/pkg/
+/spec/reports/
+/spec/examples.txt
+/test/tmp/
+/test/version_tmp/
+*.log
+*.orig
+
+# RSpec
+/spec/tmp
+.rspec_status
+
+# Bundler
+/vendor/bundle
+.bundle
+
+# Node.js & JavaScript
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+/yarn.lock
+/package-lock.json
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# IDEs & Editors
+/.idea
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.settings/
+.classpath
+*.iml
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+.history/
+
+# RubyMine
+.rakeTasks
+*.iws
+out/
+.idea_modules/
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# Vim
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+Session.vim
+Sessionx.vim
+.netrwhist
+tags
+[._]*.un~
+
+# Emacs
+\#*\#
+.\#*
+.dir-locals.el
+
+# Byebug
+.byebug_history
+
+# Debugger breakpoints
+.ruby-debugger-breakpoints
+
+# SimpleCov test coverage
+/coverage
+coverage/
+
+# YARD documentation
+/.yardoc
+/doc/
+/_yardoc/
+
+# Solargraph
+.solargraph.yml
+.solargraph-cache/
+
+# Language Server Protocol
+.lsp/
+
+# Tailwind CSS
+/app/assets/stylesheets/application.tailwind.css
+
+# Docker
+*.env.docker
+docker-compose.override.yml
+
+# Kamal
+/.kamal/secrets
+
+# Credentials
+/config/credentials/development.key
+/config/credentials/test.key
+/config/credentials/production.key
+
+# Terraform (if using for infrastructure)
+*.tfstate
+*.tfstate.backup
+.terraform/
+*.tfvars
+
+# Backup files
+*.bak
+*.backup
+*.old
+*.orig
+
+# Ignore SSL certificates (except in specific cases)
+*.pem
+*.key
+*.crt
+*.cer
+
+# Ignore local-specific configurations
+/config/database.yml.local
+/config/storage.yml.local
+
+# Ignore temporary and cache files
+.sass-cache/
+*.css.map
+.cache/
+*.min.js.map
+*.min.css.map
+
+# Bootsnap cache
+/tmp/cache/bootsnap*
+
+# Sprockets cache
+/tmp/sprockets/
+
+# Ignore Rails cache
+/tmp/cache/
+
+# Spring (if used)
+/spring/*.pid
+
+# Ignore Procfile.local for local overrides
+/Procfile.local
