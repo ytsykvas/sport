@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
-module Crm
-  class DashboardController < BaseController
-    def index
-    end
+class Crm::DashboardController < Crm::BaseController
+  def index
+    endpoint Crm::Dashboard::Operation::Index, Crm::Dashboard::Component::Index
   end
 end

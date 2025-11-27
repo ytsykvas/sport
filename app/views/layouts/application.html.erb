@@ -28,6 +28,22 @@
     <%= render Shared::Navbar::Component::Navbar.new(current_user: current_user) %>
     
     <div class="container my-5">
+      <% unless devise_controller? && (controller_name == 'registrations' || controller_name == 'sessions') && (action_name == 'new' || action_name == 'create') %>
+        <% if notice.present? %>
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <%= notice %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        <% end %>
+
+        <% if alert.present? %>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <%= alert %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        <% end %>
+      <% end %>
+
       <%= yield %>
     </div>
 

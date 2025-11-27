@@ -10,7 +10,7 @@ class Base::Operation::Base
 
   def initialize(**attrs)
     @attrs = attrs
-    @result = Base::Operation::Result.new
+    @result = ::Base::Operation::Result.new
   end
 
   def call

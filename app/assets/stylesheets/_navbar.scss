@@ -103,6 +103,30 @@
   opacity: 0.5;
 }
 
+.navbar .btn {
+  color: white !important;
+
+  &:hover {
+    color: white !important;
+  }
+
+  &.btn-secondary {
+    color: white !important;
+
+    &:hover {
+      color: white !important;
+    }
+  }
+
+  &.btn-danger {
+    color: white !important;
+
+    &:hover {
+      color: white !important;
+    }
+  }
+}
+
 .dropdown-menu .btn {
   margin: 0;
   border-radius: $radius-sm;
@@ -112,16 +136,18 @@
   &.btn-danger {
     background-color: var(--error);
     border-color: var(--error);
-    color: var(--text-inverse);
+    color: white !important;
 
     &:hover {
       background-color: var(--error);
+      color: white !important;
       opacity: 0.9;
       transform: translateY(-1px);
       box-shadow: var(--shadow-md);
     }
 
     &:active {
+      color: white !important;
       transform: translateY(0);
     }
   }

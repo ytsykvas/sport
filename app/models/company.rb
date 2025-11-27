@@ -4,7 +4,7 @@ class Company < ApplicationRecord
   has_many :users, dependent: :nullify
 
   # Validations
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true
   validates :owner, presence: true
   validate :owner_must_have_owner_role, unless: -> { owner&.new_record? }
 

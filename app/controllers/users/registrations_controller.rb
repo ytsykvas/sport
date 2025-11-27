@@ -35,6 +35,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       else
         clean_up_passwords resource
         set_minimum_password_length
+        # Clear flash alert since errors are shown in the form
+        flash[:alert] = nil
         respond_with resource
       end
     else
@@ -45,6 +47,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     Rails.logger.error "Registration failed: #{e.record.class} - #{e.record.errors.full_messages.join(', ')}"
     clean_up_passwords resource
     set_minimum_password_length
+    # Clear flash alert since errors are shown in the form
+    flash[:alert] = nil
     respond_with resource
   end
 

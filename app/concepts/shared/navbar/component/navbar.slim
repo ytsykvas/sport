@@ -16,17 +16,17 @@ nav.navbar.navbar-expand-lg.shadow-sm data-controller="navbar"
             i.bi.bi-search.me-1
             = I18n.t('screener.navbar.search')
       ul.navbar-nav.ms-auto
-        - if signed_in?
           li.nav-item.me-4
             = link_to '#', class: 'nav-link p-0 d-flex align-items-center', title: 'Toggle theme', data: { controller: 'theme', action: 'click->theme#toggle', theme_target: 'toggle' } do
               i.bi.bi-moon-stars-fill.fs-3
               span.d-lg-none.ms-2 = I18n.t('screener.navbar.theme')
-          li.nav-item.me-4
-            = link_to '#', class: 'nav-link p-0 d-flex align-items-center', title: user_name do
-              i.bi.bi-person-circle.fs-3
-              span.d-lg-none.ms-2 = I18n.t('screener.navbar.profile')
-          li.nav-item.d-flex.align-items-center
-            = link_to I18n.t('screener.navbar.sign_out'), destroy_user_session_path, data: { turbo_method: :delete }, class: 'btn btn-danger btn-sm text-white'
-        - else
-          li.nav-item.auth-buttons
-            = link_to I18n.t('screener.navbar.sign_in'), new_user_session_path, class: 'btn btn-secondary'
+          - if signed_in?
+            li.nav-item.me-4
+              = link_to '#', class: 'nav-link p-0 d-flex align-items-center', title: user_name do
+                i.bi.bi-person-circle.fs-3
+                span.d-lg-none.ms-2 = I18n.t('screener.navbar.profile')
+            li.nav-item.d-flex.align-items-center
+              = link_to I18n.t('screener.navbar.sign_out'), destroy_user_session_path, data: { turbo_method: :delete }, class: 'btn btn-danger btn-sm text-white'
+          - else
+            li.nav-item.auth-buttons
+              = link_to I18n.t('screener.navbar.sign_in'), new_user_session_path, class: 'btn btn-secondary'

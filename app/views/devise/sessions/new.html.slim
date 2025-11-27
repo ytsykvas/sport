@@ -6,6 +6,10 @@
         p.text-muted = I18n.t('devise.sessions.new.subtitle')
 
       = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'auth-form' }) do |f|
+        - if alert.present?
+          .alert.alert-danger
+            = alert
+
         .form-group
           = f.label :email, I18n.t('devise.sessions.new.email'), class: 'form-label required'
           = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "your@email.com", class: 'form-control'

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Shared::Sidebar::Component::Sidebar < ViewComponent::Base
+class Shared::Sidebar::Component::Sidebar < Base::Component::Base
   def initialize(current_user: nil)
     @current_user = current_user
   end
