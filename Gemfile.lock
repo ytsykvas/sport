@@ -349,6 +349,9 @@ GEM
       websocket (~> 1.0)
     shoulda-matchers (7.0.1)
       activesupport (>= 7.1)
+    simple_form (5.4.0)
+      actionpack (>= 7.0)
+      activemodel (>= 7.0)
     slim (5.2.1)
       temple (~> 0.10.0)
       tilt (>= 2.1.0)
@@ -447,6 +450,7 @@ DEPENDENCIES
   rubocop-rails-omakase
   selenium-webdriver
   shoulda-matchers
+  simple_form
   slim-rails
   solid_cable
   solid_cache

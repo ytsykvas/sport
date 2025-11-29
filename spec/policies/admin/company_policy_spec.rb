@@ -1,0 +1,54 @@
+# frozen_string_literal: true
+
+require 'rails_helper'
+
+RSpec.describe Admin::CompanyPolicy, type: :policy do
+  subject { described_class.new(user, record) }
+
+  let(:record) { build(:company) }
+
+  describe 'inheritance' do
+    it 'inherits from Admin::BasePolicy' do
+      expect(described_class.superclass).to eq(Admin::BasePolicy)
+    end
+
+    it 'uses BasePolicy methods' do
+      admin_user = build(:user, :admin)
+      policy = described_class.new(admin_user, record)
+
+      expect(policy.index?).to be true
+      expect(policy.show?).to be true
+      expect(policy.create?).to be true
+      expect(policy.update?).to be true
+      expect(policy.destroy?).to be true
+    end
+  end
+
+  describe 'Scope' do
+    let(:admin_user) { create(:user, :admin) }
+    let(:customer_user) { create(:user, :customer) }
+    let!(:companies) { create_list(:company, 3) }
+
+    context 'when user is admin' do
+      it 'returns all companies' do
+        scope = described_class::Scope.new(admin_user, Company.all).resolve
+        expect(scope.count).to be >= 3
+        expect(scope).to include(*companies)
+      end
+    end
+
+    context 'when user is not admin' do
+      it 'returns empty collection' do
+        scope = described_class::Scope.new(customer_user, Company.all).resolve
+        expect(scope).to be_empty
+      end
+    end
+
+    context 'when user is nil' do
+      it 'returns empty collection' do
+        scope = described_class::Scope.new(nil, Company.all).resolve
+        expect(scope).to be_empty
+      end
+    end
+  end
+end

@@ -64,21 +64,67 @@ RSpec.describe Shared::Navbar::Component::Navbar, type: :component do
   end
 
   describe '#active_nav_class' do
-    let(:request_double) { double(path: '/test/path') }
+    context 'when path is /admin' do
+      let(:request_double) { double(path: '/admin') }
 
-    before do
-      allow_any_instance_of(described_class).to receive(:request).and_return(request_double)
+      before do
+        allow_any_instance_of(described_class).to receive(:request).and_return(request_double)
+      end
+
+      it 'returns "active" for /admin path' do
+        expect(component_with_user.active_nav_class('/admin')).to eq('active')
+      end
     end
 
-    context 'when path matches' do
-      it 'returns "active"' do
+    context 'when path is /admin/dashboard' do
+      let(:request_double) { double(path: '/admin/dashboard') }
+
+      before do
+        allow_any_instance_of(described_class).to receive(:request).and_return(request_double)
+      end
+
+      it 'returns "active" for /admin path when checking /admin' do
+        expect(component_with_user.active_nav_class('/admin')).to eq('active')
+      end
+    end
+
+    context 'when path is /admin/users' do
+      let(:request_double) { double(path: '/admin/users') }
+
+      before do
+        allow_any_instance_of(described_class).to receive(:request).and_return(request_double)
+      end
+
+      it 'returns "active" for /admin path when checking /admin' do
+        expect(component_with_user.active_nav_class('/admin')).to eq('active')
+      end
+    end
+
+    context 'when path matches regular path' do
+      let(:request_double) { double(path: '/test/path') }
+
+      before do
+        allow_any_instance_of(described_class).to receive(:request).and_return(request_double)
+      end
+
+      it 'returns "active" for matching path' do
         expect(component_with_user.active_nav_class('/test')).to eq('active')
       end
     end
 
     context 'when path does not match' do
+      let(:request_double) { double(path: '/other/path') }
+
+      before do
+        allow_any_instance_of(described_class).to receive(:request).and_return(request_double)
+      end
+
       it 'returns empty string' do
-        expect(component_with_user.active_nav_class('/other')).to eq('')
+        expect(component_with_user.active_nav_class('/test')).to eq('')
+      end
+
+      it 'returns empty string for /admin when path is not admin' do
+        expect(component_with_user.active_nav_class('/admin')).to eq('')
       end
     end
   end

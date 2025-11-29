@@ -229,6 +229,7 @@ en:
       sign_out: "Sign Out"
       sign_in: "Sign In"
       sign_up: "Sign Up"
+      admin_panel: "Admin Panel"
     home:
       hero:
         title: "Find Your Sport"
@@ -242,3 +243,28 @@ en:
         title: "For Teams"
         description: "Organize your team events and tournaments with ease."
         button: "Team Services"
+  
+  # Admin
+  admin:
+    navbar:
+      dashboard: "Dashboard"
+      users: "Users"
+      companies: "Companies"
+      settings: "Settings"
+      screener: "Screener"
+    dashboard:
+      users:
+        title: "Users"
+        description: "Total number of users in the system"
+      companies:
+        title: "Companies"
+        description: "Total number of companies in the system"
+      admins:
+        title: "Administrators"
+        description: "Number of administrators in the system"
+  
+  # Authorization
+  authorization:
+    admin_access_denied: "You don't have access to the admin panel."
+    crm_access_denied: "You don't have access to this section."
+    action_access_denied: "You don't have access to this action."

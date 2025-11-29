@@ -1,15 +1,15 @@
 - if @company.present?
   .card
     .card-body
-      = form_with model: @company, url: crm_edit_company_path, method: :put, local: true, class: 'company-form' do |f|
-        = render "devise/shared/error_messages", resource: @company
+      = helpers.simple_form_for @company, url: crm_edit_company_path, method: :put, html: { class: 'company-form' } do |f|
+        = f.input :name,
+            label: I18n.t('crm.company.edit.name'),
+            placeholder: I18n.t('crm.company.edit.name_placeholder'),
+            autofocus: true,
+            input_html: { class: 'form-control' },
+            error_html: { class: 'invalid-feedback' }
 
-        .form-group
-          = f.label :name, I18n.t('crm.company.edit.name'), class: 'form-label required'
-          = f.text_field :name, autofocus: true, class: 'form-control', placeholder: I18n.t('crm.company.edit.name_placeholder')
-
-        .form-group
-          = f.submit I18n.t('crm.company.edit.submit'), class: 'btn-primary btn-block btn-lg'
+        = f.button :submit, I18n.t('crm.company.edit.submit'), class: 'btn-primary btn-lg mt-3'
 - else
   .alert.alert-warning
     = I18n.t('crm.company.edit.no_company')

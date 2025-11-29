@@ -16,7 +16,13 @@ class Shared::Navbar::Component::Navbar < ViewComponent::Base
   end
 
   def active_nav_class(path)
-    request.path.starts_with?(path) ? "active" : ""
+    current_path = request.path
+    # For admin panel, check both /admin and paths starting with /admin
+    if path == "/admin"
+      current_path.starts_with?("/admin") ? "active" : ""
+    else
+      current_path.starts_with?(path) ? "active" : ""
+    end
   end
 
   def admin?

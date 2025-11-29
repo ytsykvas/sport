@@ -22,6 +22,12 @@ Rails.application.routes.draw do
     root to: "home#index"
   end
 
+  # Admin Namespace (Administrators)
+  namespace :admin do
+    root to: "dashboard#index"
+    resources :dashboard, only: [ :index ]
+  end
+
   # Root route redirects to Screener (or could be a landing page)
   root "screener/home#index"
 end

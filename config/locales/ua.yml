@@ -229,6 +229,7 @@ ua:
       sign_out: "Вийти"
       sign_in: "Увійти"
       sign_up: "Реєстрація"
+      admin_panel: "Адмін панель"
     home:
       hero:
         title: "Знайдіть свій спорт"
@@ -242,3 +243,28 @@ ua:
         title: "Для команд"
         description: "Організуйте події та турніри вашої команди з легкістю."
         button: "Послуги для команд"
+  
+  # Admin
+  admin:
+    navbar:
+      dashboard: "Дашборд"
+      users: "Користувачі"
+      companies: "Компанії"
+      settings: "Налаштування"
+      screener: "Скрінер"
+    dashboard:
+      users:
+        title: "Користувачі"
+        description: "Загальна кількість користувачів у системі"
+      companies:
+        title: "Компанії"
+        description: "Загальна кількість компаній у системі"
+      admins:
+        title: "Адміністратори"
+        description: "Кількість адміністраторів у системі"
+  
+  # Authorization
+  authorization:
+    admin_access_denied: "У вас немає доступу до адмін-панелі."
+    crm_access_denied: "У вас немає доступу до цього розділу."
+    action_access_denied: "У вас немає доступу до цієї дії."

@@ -15,6 +15,11 @@ nav.navbar.navbar-expand-lg.shadow-sm data-controller="navbar"
           = link_to '#', class: "nav-link #{active_nav_class('/search')}" do
             i.bi.bi-search.me-1
             = I18n.t('screener.navbar.search')
+        - if admin?
+          li.nav-item
+            = link_to admin_root_path, class: "nav-link #{active_nav_class('/admin')}" do
+              i.bi.bi-shield-check.me-1
+              = I18n.t('screener.navbar.admin_panel')
       ul.navbar-nav.ms-auto
           li.nav-item.me-4
             = link_to '#', class: 'nav-link p-0 d-flex align-items-center', title: 'Toggle theme', data: { controller: 'theme', action: 'click->theme#toggle', theme_target: 'toggle' } do
