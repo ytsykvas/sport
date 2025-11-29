@@ -9,7 +9,9 @@ module Screener
     private
 
     def authorize_screener_access
-      authorize :screener, :access?
+      user = current_user
+      policy = Screener::BasePolicy.new(user, nil)
+      raise Pundit::NotAuthorizedError, policy: policy, query: :index? unless policy.index?
     end
   end
 end

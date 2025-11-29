@@ -3,15 +3,12 @@
 class Crm::Company::Operation::Create < Base::Operation::Base
   def call
     super
-    # Move all errors to :base so error_message can return them
-    # Use full_messages from user.errors for proper translations
+
     if result.model.is_a?(User)
       user = result.model
-      # Add user's full error messages to result.errors[:base]
       user.errors.full_messages.each do |full_message|
         result.errors.add(:base, full_message) unless result.errors[:base].include?(full_message)
       end
-      # Remove attribute-specific errors that were already added as full_messages
       result.errors.messages.each do |attribute, messages|
         next if attribute == :base
         result.errors.delete(attribute)
@@ -27,7 +24,6 @@ class Crm::Company::Operation::Create < Base::Operation::Base
     user = params[:resource] || User.new(user_params)
     company_name = params[:company_name].presence || "#{user.name}'s Company"
 
-    # Set model as user first so base class can copy errors properly
     self.model = user
 
     ActiveRecord::Base.transaction do
@@ -56,7 +52,6 @@ class Crm::Company::Operation::Create < Base::Operation::Base
 
       self.redirect_path = "/crm"
       notice("Successfully registered!", level: :notice)
-      # Convert to OpenStruct for component after successful save
       self.model = ::OpenStruct.new(user: user)
     end
   end

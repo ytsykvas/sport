@@ -1,0 +1,15 @@
+- if @company.present?
+  .card
+    .card-body
+      = form_with model: @company, url: crm_edit_company_path, method: :put, local: true, class: 'company-form' do |f|
+        = render "devise/shared/error_messages", resource: @company
+
+        .form-group
+          = f.label :name, I18n.t('crm.company.edit.name'), class: 'form-label required'
+          = f.text_field :name, autofocus: true, class: 'form-control', placeholder: I18n.t('crm.company.edit.name_placeholder')
+
+        .form-group
+          = f.submit I18n.t('crm.company.edit.submit'), class: 'btn-primary btn-block btn-lg'
+- else
+  .alert.alert-warning
+    = I18n.t('crm.company.edit.no_company')

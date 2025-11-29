@@ -9,7 +9,9 @@ module Crm
     private
 
     def authorize_crm_access
-      authorize :crm, :access?
+      user = current_user
+      policy = Crm::BasePolicy.new(user, nil)
+      raise Pundit::NotAuthorizedError, policy: policy, query: :index? unless policy.index?
     end
   end
 end

@@ -56,6 +56,10 @@
           &:hover {
             background-color: var(--bg-hover);
             color: var(--primary-base);
+
+            i {
+              color: var(--primary-base);
+            }
           }
 
           &.active {
@@ -68,7 +72,8 @@
           }
 
           i {
-            color: var(--text-tertiary);
+            color: var(--text-primary) !important;
+            transition: color 0.2s ease-in-out;
           }
         }
       }

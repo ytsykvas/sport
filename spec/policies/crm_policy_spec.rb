@@ -1,16 +1,16 @@
 require 'rails_helper'
 
-RSpec.describe CrmPolicy, type: :policy do
+RSpec.describe Crm::BasePolicy, type: :policy do
   subject { described_class.new(user, record) }
 
   let(:record) { double('Record') }
 
-  describe '#access?' do
+  describe '#index?' do
     context 'when user is nil' do
       let(:user) { nil }
 
       it 'denies access' do
-        expect(subject.access?).to be false
+        expect(subject.index?).to be false
       end
     end
 
@@ -18,7 +18,7 @@ RSpec.describe CrmPolicy, type: :policy do
       let(:user) { build(:user, :admin) }
 
       it 'permits access' do
-        expect(subject.access?).to be true
+        expect(subject.index?).to be true
       end
     end
 
@@ -26,7 +26,7 @@ RSpec.describe CrmPolicy, type: :policy do
       let(:user) { build(:user, role: :owner) }
 
       it 'permits access' do
-        expect(subject.access?).to be true
+        expect(subject.index?).to be true
       end
     end
 
@@ -34,7 +34,7 @@ RSpec.describe CrmPolicy, type: :policy do
       let(:user) { build(:user, :employee) }
 
       it 'permits access' do
-        expect(subject.access?).to be true
+        expect(subject.index?).to be true
       end
     end
 
@@ -42,7 +42,7 @@ RSpec.describe CrmPolicy, type: :policy do
       let(:user) { build(:user, :manager) }
 
       it 'permits access' do
-        expect(subject.access?).to be true
+        expect(subject.index?).to be true
       end
     end
 
@@ -50,7 +50,7 @@ RSpec.describe CrmPolicy, type: :policy do
       let(:user) { build(:user, :customer) }
 
       it 'denies access' do
-        expect(subject.access?).to be false
+        expect(subject.index?).to be false
       end
     end
   end
@@ -77,25 +77,25 @@ RSpec.describe CrmPolicy, type: :policy do
       it 'permits access for created admin' do
         user = create(:user, :admin)
         policy = described_class.new(user, record)
-        expect(policy.access?).to be true
+        expect(policy.index?).to be true
       end
 
       it 'permits access for created employee' do
         user = create(:user, :employee)
         policy = described_class.new(user, record)
-        expect(policy.access?).to be true
+        expect(policy.index?).to be true
       end
 
       it 'permits access for created manager' do
         user = create(:user, :manager)
         policy = described_class.new(user, record)
-        expect(policy.access?).to be true
+        expect(policy.index?).to be true
       end
 
       it 'denies access for created customer' do
         user = create(:user, :customer)
         policy = described_class.new(user, record)
-        expect(policy.access?).to be false
+        expect(policy.index?).to be false
       end
     end
   end

@@ -256,3 +256,6 @@ docker-compose.override.yml
 
 # Ignore Procfile.local for local overrides
 /Procfile.local
+
+# Documentation
+/docs

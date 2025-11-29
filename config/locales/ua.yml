@@ -17,12 +17,15 @@ ua:
   activerecord:
     models:
       user: "аккаунт"
+      company: "компанія"
     attributes:
       user:
         name: "Ім'я"
         email: "Електронна пошта"
         password: "Пароль"
         password_confirmation: "Підтвердження паролю"
+      company:
+        name: "Назва компанії"
     errors:
       messages:
         record_invalid: "Помилка валідації: %{errors}"
@@ -183,6 +186,7 @@ ua:
       dashboard: "Дашборд"
       listings: "Оголошення"
       settings: "Налаштування"
+      my_company: "Моя компанія"
     dashboard:
       title: "Дашборд"
       share: "Поділитися"
@@ -202,6 +206,13 @@ ua:
         header: "Доходи"
         amount: "$%{amount}"
         description: "Доходи, згенеровані цього місяця."
+    company:
+      edit:
+        title: "Моя компанія"
+        name: "Назва компанії"
+        name_placeholder: "Введіть назву компанії"
+        submit: "Зберегти"
+        no_company: "У вас немає компанії"
   
   # Screener
   screener:

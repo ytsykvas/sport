@@ -25,12 +25,15 @@ en:
   activerecord:
     models:
       user: "Account"
+      company: "Company"
     attributes:
       user:
         name: "Name"
         email: "Email"
         password: "Password"
         password_confirmation: "Password confirmation"
+      company:
+        name: "Company Name"
     errors:
       messages:
         record_invalid: "Validation failed: %{errors}"
@@ -183,6 +186,7 @@ en:
       dashboard: "Dashboard"
       listings: "Listings"
       settings: "Settings"
+      my_company: "My Company"
     dashboard:
       title: "Dashboard"
       share: "Share"
@@ -202,6 +206,13 @@ en:
         header: "Revenue"
         amount: "$%{amount}"
         description: "Revenue generated this month."
+    company:
+      edit:
+        title: "My Company"
+        name: "Company Name"
+        name_placeholder: "Enter company name"
+        submit: "Save"
+        no_company: "You don't have a company"
   
   # Screener
   screener:

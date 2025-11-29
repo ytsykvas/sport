@@ -54,6 +54,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   private
 
+  def after_sign_up_path_for(resource)
+    if resource.owner?
+      crm_edit_company_path
+    else
+      super
+    end
+  end
+
   def create_company_for_owner(user, company_name)
     company = Company.new(
       name: company_name,

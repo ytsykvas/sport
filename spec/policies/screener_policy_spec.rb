@@ -1,16 +1,16 @@
 require 'rails_helper'
 
-RSpec.describe ScreenerPolicy, type: :policy do
+RSpec.describe Screener::BasePolicy, type: :policy do
   subject { described_class.new(user, record) }
 
   let(:record) { double('Record') }
 
-  describe '#access?' do
+  describe '#index?' do
     context 'when user is nil' do
       let(:user) { nil }
 
       it 'permits access' do
-        expect(subject.access?).to be true
+        expect(subject.index?).to be true
       end
     end
 
@@ -18,7 +18,7 @@ RSpec.describe ScreenerPolicy, type: :policy do
       let(:user) { build(:user, :admin) }
 
       it 'permits access' do
-        expect(subject.access?).to be true
+        expect(subject.index?).to be true
       end
     end
 
@@ -26,7 +26,7 @@ RSpec.describe ScreenerPolicy, type: :policy do
       let(:user) { build(:user, :customer) }
 
       it 'permits access' do
-        expect(subject.access?).to be true
+        expect(subject.index?).to be true
       end
     end
 
@@ -34,7 +34,7 @@ RSpec.describe ScreenerPolicy, type: :policy do
       let(:user) { build(:user, role: :owner) }
 
       it 'denies access' do
-        expect(subject.access?).to be false
+        expect(subject.index?).to be false
       end
     end
 
@@ -42,7 +42,7 @@ RSpec.describe ScreenerPolicy, type: :policy do
       let(:user) { build(:user, :employee) }
 
       it 'denies access' do
-        expect(subject.access?).to be false
+        expect(subject.index?).to be false
       end
     end
 
@@ -50,7 +50,7 @@ RSpec.describe ScreenerPolicy, type: :policy do
       let(:user) { build(:user, :manager) }
 
       it 'denies access' do
-        expect(subject.access?).to be false
+        expect(subject.index?).to be false
       end
     end
   end
@@ -77,25 +77,25 @@ RSpec.describe ScreenerPolicy, type: :policy do
       it 'permits access for created admin' do
         user = create(:user, :admin)
         policy = described_class.new(user, record)
-        expect(policy.access?).to be true
+        expect(policy.index?).to be true
       end
 
       it 'permits access for created customer' do
         user = create(:user, :customer)
         policy = described_class.new(user, record)
-        expect(policy.access?).to be true
+        expect(policy.index?).to be true
       end
 
       it 'denies access for created employee' do
         user = create(:user, :employee)
         policy = described_class.new(user, record)
-        expect(policy.access?).to be false
+        expect(policy.index?).to be false
       end
 
       it 'denies access for created manager' do
         user = create(:user, :manager)
         policy = described_class.new(user, record)
-        expect(policy.access?).to be false
+        expect(policy.index?).to be false
       end
     end
   end
@@ -104,12 +104,12 @@ RSpec.describe ScreenerPolicy, type: :policy do
     let(:user) { nil }
 
     it 'allows anonymous access to screener' do
-      expect(subject.access?).to be true
+      expect(subject.index?).to be true
     end
 
     it 'is accessible without authentication' do
       policy = described_class.new(nil, record)
-      expect(policy.access?).to be true
+      expect(policy.index?).to be true
     end
   end
 
@@ -121,12 +121,12 @@ RSpec.describe ScreenerPolicy, type: :policy do
       employee = build(:user, :employee)
       manager = build(:user, :manager)
 
-      expect(described_class.new(nil, record).access?).to be true
-      expect(described_class.new(customer, record).access?).to be true
-      expect(described_class.new(admin, record).access?).to be true
-      expect(described_class.new(owner, record).access?).to be false
-      expect(described_class.new(employee, record).access?).to be false
-      expect(described_class.new(manager, record).access?).to be false
+      expect(described_class.new(nil, record).index?).to be true
+      expect(described_class.new(customer, record).index?).to be true
+      expect(described_class.new(admin, record).index?).to be true
+      expect(described_class.new(owner, record).index?).to be false
+      expect(described_class.new(employee, record).index?).to be false
+      expect(described_class.new(manager, record).index?).to be false
     end
   end
 end

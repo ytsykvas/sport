@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   namespace :crm do
     root to: "dashboard#index"
     resources :dashboard, only: [ :index ]
+    get "company/edit", to: "company#edit", as: :edit_company
   end
 
   # Screener Namespace (End Consumers)

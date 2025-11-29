@@ -1,5 +1,4 @@
 .sidebar-container data-controller="navbar"
-  / Top navbar for small screens
   nav.sidebar-navbar.navbar.navbar-expand-lg.shadow-sm
     .container-fluid
       = link_to I18n.t('site_name'), root_path, class: 'navbar-brand fw-bold'
@@ -25,6 +24,10 @@
             = link_to '#', class: "nav-link #{active_nav_class('/crm/settings')}" do
               i.bi.bi-gear.me-1
               = I18n.t('crm.navbar.settings')
+          li.nav-item
+            = link_to '#', class: "nav-link #{active_nav_class('/crm/company')}" do
+              i.bi.bi-building.me-1
+              = I18n.t('crm.navbar.my_company')
         
         ul.navbar-nav.ms-auto
           - if signed_in?
@@ -58,6 +61,10 @@
           = link_to '#', class: "nav-link d-flex align-items-center #{active_nav_class('/crm/bookings')}" do
             i.bi.bi-calendar-check.me-2.fs-5
             span = I18n.t('crm.dashboard.bookings.title')
+        li.nav-item.mb-2
+          = link_to crm_edit_company_path, class: "nav-link d-flex align-items-center #{active_nav_class('/crm/company')}" do
+            i.bi.bi-building.me-2.fs-5
+            span = I18n.t('crm.navbar.my_company')
         li.nav-item.mb-2
           = link_to '#', class: "nav-link d-flex align-items-center #{active_nav_class('/crm/settings')}" do
             i.bi.bi-gear.me-2.fs-5
