@@ -262,6 +262,21 @@ ua:
       admins:
         title: "Адміністратори"
         description: "Кількість адміністраторів у системі"
+    users:
+      index:
+        title: "Користувачі"
+        table:
+          id: "ID"
+          name: "Ім'я"
+          email: "Електронна пошта"
+          role: "Роль"
+          company: "Компанія"
+          created_at: "Дата створення"
+          actions: "Дії"
+          no_company: "Немає компанії"
+          edit: "Редагувати"
+          delete: "Видалити"
+          view: "Переглянути"
   
   # Authorization
   authorization:

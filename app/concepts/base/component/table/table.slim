@@ -1,0 +1,17 @@
+div.table-responsive
+  table.table.table-hover.align-middle
+    thead
+      tr
+        - @columns.each do |column|
+          th class=th_class(column:)
+            .d-flex class="justify-content-#{column.align} gap-1"
+              = column_header(column:)
+
+    tbody
+      - @rows.each_with_index do |row, index|
+        = render_row(row, index)
+
+/ - if @rows.respond_to?(:total_pages)
+/   .mt-3
+/     = render ::Shared::Kaminari::Component::Paginator.new(collection: @rows)
+

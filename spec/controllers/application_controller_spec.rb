@@ -33,20 +33,22 @@ RSpec.describe ApplicationController, type: :controller do
   let(:manager_user) { create(:user, :manager, company: company) }
   let(:customer_user) { create(:user, :customer) }
 
-  before do
-    routes.draw do
-      root 'screener/home#index'
-      namespace :crm do
-        root to: 'dashboard#index'
-      end
-      get 'index' => 'anonymous#index'
-      get 'test_action' => 'anonymous#test_action'
-    end
-  end
-
   describe '#user_not_authorized' do
     context 'when Admin::BasePolicy raises error' do
       before do
+        routes.draw do
+          root 'screener/home#index'
+          namespace :crm do
+            root to: 'dashboard#index'
+          end
+          namespace :admin do
+            root to: 'dashboard#index'
+          end
+          get 'index' => 'anonymous#index'
+          get 'test_action' => 'anonymous#test_action'
+        end
+        allow(controller).to receive(:crm_root_path).and_return('/crm') if controller.respond_to?(:crm_root_path)
+        controller.define_singleton_method(:crm_root_path) { '/crm' } unless controller.respond_to?(:crm_root_path)
         controller.define_singleton_method(:policy_class) { Admin::BasePolicy }
       end
 
@@ -119,6 +121,19 @@ RSpec.describe ApplicationController, type: :controller do
 
     context 'when Crm::BasePolicy raises error' do
       before do
+        routes.draw do
+          root 'screener/home#index'
+          namespace :crm do
+            root to: 'dashboard#index'
+          end
+          namespace :admin do
+            root to: 'dashboard#index'
+          end
+          get 'index' => 'anonymous#index'
+          get 'test_action' => 'anonymous#test_action'
+        end
+        allow(controller).to receive(:crm_root_path).and_return('/crm') if controller.respond_to?(:crm_root_path)
+        controller.define_singleton_method(:crm_root_path) { '/crm' } unless controller.respond_to?(:crm_root_path)
         controller.define_singleton_method(:policy_class) { Crm::BasePolicy }
       end
 
@@ -164,6 +179,19 @@ RSpec.describe ApplicationController, type: :controller do
 
     context 'when Screener::BasePolicy raises error' do
       before do
+        routes.draw do
+          root 'screener/home#index'
+          namespace :crm do
+            root to: 'dashboard#index'
+          end
+          namespace :admin do
+            root to: 'dashboard#index'
+          end
+          get 'index' => 'anonymous#index'
+          get 'test_action' => 'anonymous#test_action'
+        end
+        allow(controller).to receive(:crm_root_path).and_return('/crm') if controller.respond_to?(:crm_root_path)
+        controller.define_singleton_method(:crm_root_path) { '/crm' } unless controller.respond_to?(:crm_root_path)
         controller.define_singleton_method(:policy_class) { Screener::BasePolicy }
       end
 
@@ -193,6 +221,17 @@ RSpec.describe ApplicationController, type: :controller do
 
     context 'when other policy raises error' do
       before do
+        routes.draw do
+          root 'screener/home#index'
+          namespace :crm do
+            root to: 'dashboard#index'
+          end
+          namespace :admin do
+            root to: 'dashboard#index'
+          end
+          get 'index' => 'anonymous#index'
+          get 'test_action' => 'anonymous#test_action'
+        end
         other_policy_class = Class.new(ApplicationPolicy) do
           def index?
             false

@@ -1,0 +1,4 @@
+tr data-model-hashid="#{row_id(row: @row, index: @index)}" *@attributes
+  - @columns.each do |column|
+    = render_td(row: @row, column:)
+

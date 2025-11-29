@@ -262,6 +262,21 @@ en:
       admins:
         title: "Administrators"
         description: "Number of administrators in the system"
+    users:
+      index:
+        title: "Users"
+        table:
+          id: "ID"
+          name: "Name"
+          email: "Email"
+          role: "Role"
+          company: "Company"
+          created_at: "Created At"
+          actions: "Actions"
+          no_company: "No company"
+          edit: "Edit"
+          delete: "Delete"
+          view: "View"
   
   # Authorization
   authorization:

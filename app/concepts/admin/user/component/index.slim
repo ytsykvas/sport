@@ -1,1 +1,5 @@
-h1 Users list page
+.container-fluid.py-4
+  .d-flex.justify-content-between.align-items-center.mb-4
+    h1.mb-0 = I18n.t('admin.users.index.title')
+
+  = render Admin::User::Component::UsersTable.new(users: @users, sorting_path: admin_users_path)
