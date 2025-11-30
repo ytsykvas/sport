@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root to: "dashboard#index"
     resources :dashboard, only: [ :index ]
-    resources :users, only: [ :index ]
+    resources :users, only: [ :index, :show ]
   end
 
   # Root route redirects to Screener (or could be a landing page)

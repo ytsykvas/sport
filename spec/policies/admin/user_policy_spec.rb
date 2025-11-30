@@ -24,6 +24,48 @@ RSpec.describe Admin::UserPolicy, type: :policy do
     end
   end
 
+  describe '#show?' do
+    context 'when user is admin' do
+      let(:user) { build(:user, :admin) }
+
+      it 'returns true' do
+        expect(subject.show?).to be true
+      end
+    end
+
+    context 'when user is owner' do
+      let(:user) { build(:user, :owner) }
+
+      it 'returns false' do
+        expect(subject.show?).to be false
+      end
+    end
+
+    context 'when user is manager' do
+      let(:user) { build(:user, :manager) }
+
+      it 'returns false' do
+        expect(subject.show?).to be false
+      end
+    end
+
+    context 'when user is customer' do
+      let(:user) { build(:user, :customer) }
+
+      it 'returns false' do
+        expect(subject.show?).to be false
+      end
+    end
+
+    context 'when user is nil' do
+      let(:user) { nil }
+
+      it 'returns false' do
+        expect(subject.show?).to be false
+      end
+    end
+  end
+
   describe 'Scope' do
     let(:admin_user) { create(:user, :admin) }
     let(:customer_user) { create(:user, :customer) }

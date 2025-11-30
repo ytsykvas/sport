@@ -53,10 +53,19 @@ class Base::Component::Btn < ViewComponent::Base
       classes << "btn-primary"
     end
 
-    if @config.size.to_s == "xs"
+    # Size handling: xs, sm, S, M, L
+    case @config.size.to_s.upcase
+    when "XS"
       classes << "btn-xs"
-    elsif @config.size.to_s == "sm" || @config.size.blank?
+    when "SM", "S"
       classes << "btn-sm"
+    when "M"
+      # Default size - no additional class
+    when "L"
+      classes << "btn-lg"
+      classes << "w-100"
+    else
+      classes << "btn-sm" if @config.size.blank?
     end
 
     classes << "disabled" if @config.disabled

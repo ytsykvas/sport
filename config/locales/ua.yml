@@ -277,6 +277,23 @@ ua:
           use: "Використати"
           delete: "Видалити"
           view: "Переглянути"
+      show:
+        title: "Деталі користувача"
+        back_to_users: "Користувачі"
+        personal_info: "Особиста інформація"
+        company_info: "Інформація про компанію"
+        actions: "Дії"
+        name: "Ім'я"
+        email: "Електронна пошта"
+        role: "Роль"
+        created_at: "Учасник з"
+        company_name: "Компанія"
+        company_role: "Роль у компанії"
+        owner: "Власник"
+        no_company: "Немає компанії"
+        edit_user: "Редагувати користувача"
+        delete_user: "Видалити користувача"
+        delete_confirm: "Ви впевнені, що хочете видалити цього користувача?"
   
   # Authorization
   authorization:

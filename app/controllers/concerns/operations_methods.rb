@@ -44,6 +44,17 @@ module OperationsMethods
           end
 
           render component.new(**params)
+        elsif action_name == "show"
+          flash[:notice] = result.message if result.message.present?
+          flash[:alert] = result.error_message if result.error_message.present?
+          params = if result.model.is_a?(::OpenStruct)
+                     result.model.to_h
+          else
+                     key = operation.to_s.split("::").first.underscore
+                     { "#{key}": result.model }
+          end
+
+          render component.new(**params)
         elsif action_name == "edit" || action_name == "new"
           flash[:notice] = result.message if result.message.present?
           flash[:alert] = result.error_message if result.error_message.present?

@@ -38,6 +38,10 @@ RSpec.describe OperationsMethods, type: :controller do
       end
       render plain: 'OK'
     end
+
+    def show
+      endpoint(TestOperation, TestComponent)
+    end
   end
 
   # Test operation class
@@ -136,6 +140,7 @@ RSpec.describe OperationsMethods, type: :controller do
       get 'edit' => 'anonymous#edit'
       get 'new' => 'anonymous#new'
       get 'show_custom' => 'anonymous#show_custom'
+      get 'show/:id' => 'anonymous#show', as: :show_item
       get 'anonymous' => 'anonymous#index', as: :anonymous
     end
     sign_in(user, scope: :user) if user
@@ -513,6 +518,113 @@ RSpec.describe OperationsMethods, type: :controller do
             end
           end
           get :index
+        end
+      end
+    end
+
+    describe 'show action' do
+      let(:show_result_with_openstruct) do
+        double('Result',
+          success?: true,
+          failure?: false,
+          message: 'User loaded',
+          error_message: nil,
+          redirect_path: nil,
+          model: OpenStruct.new(user: User.new(name: 'Test User')),
+          :[] => nil
+        )
+      end
+
+      let(:show_result_without_openstruct) do
+        double('Result',
+          success?: true,
+          failure?: false,
+          message: nil,
+          error_message: nil,
+          redirect_path: nil,
+          model: User.new(name: 'Test User'),
+          :[] => nil
+        )
+      end
+
+      context 'when model is OpenStruct' do
+        before do
+          allow(TestOperation).to receive(:call).and_return(show_result_with_openstruct)
+        end
+
+        it 'converts OpenStruct to hash' do
+          expect(TestComponent).to receive(:new).with(user: instance_of(User)).and_call_original
+          expect_any_instance_of(TestComponent).to receive(:render_in).and_return('test html')
+          get :show, params: { id: 1 }
+        end
+
+        it 'renders the component' do
+          expect_any_instance_of(TestComponent).to receive(:render_in).and_return('test html')
+          get :show, params: { id: 1 }
+        end
+
+        it 'sets flash notice if present' do
+          expect_any_instance_of(TestComponent).to receive(:render_in).and_return('test html')
+          get :show, params: { id: 1 }
+          expect(flash[:notice]).to eq('User loaded')
+        end
+
+        it 'passes OpenStruct keys as component params' do
+          openstruct = OpenStruct.new(user: User.new, company: double('Company'))
+          result = double('Result',
+            success?: true,
+            failure?: false,
+            message: nil,
+            error_message: nil,
+            redirect_path: nil,
+            model: openstruct,
+            :[] => nil
+          )
+          allow(TestOperation).to receive(:call).and_return(result)
+          expect(TestComponent).to receive(:new).with(user: instance_of(User), company: anything).and_call_original
+          expect_any_instance_of(TestComponent).to receive(:render_in).and_return('test html')
+          get :show, params: { id: 1 }
+        end
+      end
+
+      context 'when model is not OpenStruct' do
+        before do
+          allow(TestOperation).to receive(:call).and_return(show_result_without_openstruct)
+        end
+
+        it 'extracts key from operation namespace' do
+          expect(TestComponent).to receive(:new).with(test_operation: instance_of(User)).and_call_original
+          expect_any_instance_of(TestComponent).to receive(:render_in).and_return('test html')
+          get :show, params: { id: 1 }
+        end
+
+        it 'renders the component' do
+          expect_any_instance_of(TestComponent).to receive(:render_in).and_return('test html')
+          get :show, params: { id: 1 }
+        end
+      end
+
+      context 'when show action has error' do
+        let(:show_failed_result) do
+          double('Result',
+            success?: false,
+            failure?: true,
+            message: nil,
+            error_message: 'User not found',
+            redirect_path: nil,
+            model: OpenStruct.new(user: nil),
+            :[] => nil
+          )
+        end
+
+        before do
+          allow(TestOperation).to receive(:call).and_return(show_failed_result)
+        end
+
+        it 'still renders component with error message' do
+          expect_any_instance_of(TestComponent).to receive(:render_in).and_return('test html')
+          get :show, params: { id: 1 }
+          expect(flash[:alert]).to eq('User not found')
         end
       end
     end

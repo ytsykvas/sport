@@ -1,0 +1,4 @@
+.container-fluid.py-4
+  = render ::Base::Component::TitleRow.new(title: I18n.t('admin.users.show.title'), back_path: admin_users_path, back_text: I18n.t('admin.users.show.back_to_users'), divider: true)
+
+  = render Admin::User::Component::UserCard.new(user: @user)

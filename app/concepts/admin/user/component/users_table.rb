@@ -108,14 +108,14 @@ class Admin::User::Component::UsersTable < Base::Component::Base
       render(Base::Component::Btn.new(
         type: "show",
         text: I18n.t("admin.users.index.table.view"),
-        path: "#",
-        size: "xs"
+        path: admin_user_path(user),
+        size: "S"
       )),
       render(Base::Component::Btn.new(
         type: "check",
         text: I18n.t("admin.users.index.table.use"),
         path: "#",
-        size: "xs"
+        size: "S"
       )),
       render(Base::Component::Btn.new(
         type: "remove",
@@ -123,7 +123,7 @@ class Admin::User::Component::UsersTable < Base::Component::Base
         path: "#",
         method: :delete,
         data: { confirm: "Are you sure?" },
-        size: "xs"
+        size: "S"
       ))
     ])
   end

@@ -277,6 +277,23 @@ en:
           use: "Use"
           delete: "Delete"
           view: "View"
+      show:
+        title: "User Details"
+        back_to_users: "Back to Users"
+        personal_info: "Personal Information"
+        company_info: "Company Information"
+        actions: "Actions"
+        name: "Name"
+        email: "Email"
+        role: "Role"
+        created_at: "Member Since"
+        company_name: "Company"
+        company_role: "Role in Company"
+        owner: "Owner"
+        no_company: "No company"
+        edit_user: "Edit User"
+        delete_user: "Delete User"
+        delete_confirm: "Are you sure you want to delete this user?"
   
   # Authorization
   authorization:

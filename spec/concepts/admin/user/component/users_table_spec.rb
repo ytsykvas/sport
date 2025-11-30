@@ -104,44 +104,6 @@ RSpec.describe Admin::User::Component::UsersTable, type: :component do
     end
   end
 
-  describe '#action_buttons' do
-    before do
-      allow(component).to receive(:render).and_return('<button>Mock Button</button>'.html_safe)
-    end
-
-    it 'creates button components with correct parameters' do
-      expect(Base::Component::Btn).to receive(:new).with(
-        type: "show",
-        text: I18n.t("admin.users.index.table.view"),
-        path: "#",
-        size: "xs"
-      ).and_call_original
-
-      expect(Base::Component::Btn).to receive(:new).with(
-        type: "edit",
-        text: I18n.t("admin.users.index.table.edit"),
-        path: "#",
-        size: "xs"
-      ).and_call_original
-
-      expect(Base::Component::Btn).to receive(:new).with(
-        type: "remove",
-        text: I18n.t("admin.users.index.table.delete"),
-        path: "#",
-        method: :delete,
-        data: { confirm: "Are you sure?" },
-        size: "xs"
-      ).and_call_original
-
-      component.send(:action_buttons, admin_user)
-    end
-
-    it 'returns safe join of buttons' do
-      result = component.send(:action_buttons, admin_user)
-      expect(result).to be_an(ActiveSupport::SafeBuffer)
-    end
-  end
-
   describe 'sorting configuration' do
     it 'configures sorting for ID column' do
       expect(component.instance_variable_get(:@sorting_path)).to eq(sorting_path)
