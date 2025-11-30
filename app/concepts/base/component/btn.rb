@@ -47,6 +47,8 @@ class Base::Component::Btn < ViewComponent::Base
       classes << "btn-danger"
     when "show", "edit"
       classes << "btn-outline"
+    when "check"
+      classes << "btn-outline-success"
     else
       classes << "btn-primary"
     end

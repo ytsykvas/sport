@@ -1,7 +1,7 @@
 @use 'variables' as *;
 
 .btn {
-  border-radius: $radius-sm !important;
+  border-radius: $radius-full !important;
   padding: $spacing-xs $spacing-md !important;
   font-size: $font-size-sm !important;
   line-height: 1.2 !important;
@@ -31,6 +31,13 @@
   .btn-icon {
     font-size: 0.9375rem !important;
   }
+}
+
+.btn-lg {
+  padding: $spacing-md $spacing-lg !important;
+  font-size: $font-size-base !important;
+  line-height: 1.3 !important;
+  min-height: 3rem !important;
 }
 
 .btn-sm {
@@ -66,10 +73,16 @@
 }
 
 .btn-secondary {
-  color: white !important;
+  background-color: var(--secondary-base) !important;
+  border-color: var(--secondary-base) !important;
+  color: #ffffff !important;
 
-  &:hover {
-    color: white !important;
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: var(--secondary-dark) !important;
+    border-color: var(--secondary-dark) !important;
+    color: #ffffff !important;
   }
 }
 
@@ -101,6 +114,20 @@
   }
 }
 
+.btn-outline-success {
+  background-color: transparent !important;
+  border: 1px solid var(--border-secondary) !important;
+  color: var(--text-primary) !important;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: rgba(16, 185, 129, 0.1) !important;
+    border-color: var(--success) !important;
+    color: var(--success) !important;
+  }
+}
+
 .btn-outline-secondary {
   background-color: transparent !important;
   border: 1px solid var(--border-secondary) !important;
@@ -122,6 +149,19 @@
     &:active {
       background-color: var(--bg-hover) !important;
       border-color: var(--border-secondary) !important;
+    }
+  }
+
+  .btn-outline-success {
+    border-color: var(--border-primary) !important;
+    color: var(--text-primary) !important;
+    
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: rgba(16, 185, 129, 0.15) !important;
+      border-color: var(--success) !important;
+      color: #34d399 !important;
     }
   }
 }

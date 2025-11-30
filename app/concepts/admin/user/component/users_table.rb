@@ -112,8 +112,8 @@ class Admin::User::Component::UsersTable < Base::Component::Base
         size: "xs"
       )),
       render(Base::Component::Btn.new(
-        type: "edit",
-        text: I18n.t("admin.users.index.table.edit"),
+        type: "check",
+        text: I18n.t("admin.users.index.table.use"),
         path: "#",
         size: "xs"
       )),
